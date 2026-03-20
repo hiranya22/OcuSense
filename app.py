@@ -52,6 +52,7 @@ st.markdown("""
         height: 3.5em;
         width: 100%;
     }
+    
     </style>
     """, unsafe_allow_html=True)
 
@@ -229,34 +230,26 @@ st.divider()
 st.subheader("About Retinal Lesions")
 
 with st.expander("Learn more"):
-
     st.markdown("#### 1. Types of Retinal Lesions")
-    
-    # Using columns to explain lesion types clearly
-    l_col1, l_col2 = st.columns(2)
-    
-    with l_col1:
-        st.markdown("""
-        **Microaneurysms (MA)**  
-        * Small, round outpouchings of retinal capillaries caused by weakening of vessel walls.  
-        * Typically the **earliest detectable sign** of diabetic retinal damage.
 
-        **Haemorrhages (HE)**  
-        * Occur due to rupture of damaged retinal blood vessels.  
-        * Appear as red spots or blotches and often indicate **progression from microaneurysms**.  
-        * Microaneurysms and haemorrhages are collectively referred to as **red lesions**.
+    l_col1, l_col2 = st.columns(2)
+
+    with l_col1:
+        # Use .error for Red Lesions to get the red styling/icon
+        st.error("""
+        **Red Lesions**
+        
+        * **Microaneurysms (MA):** Small, round outpouchings of capillaries. Earliest detectable sign.
+        * **Haemorrhages (HE):** Ruptured vessels appearing as red spots. Indicates progression.
         """)
 
     with l_col2:
-        st.markdown("""
-        **Hard Exudates (EX)**  
-        * Lipid and protein deposits that leak from compromised blood vessels.  
-        * Appear as small, well-defined yellow or white spots.
-
-        **Soft Exudates / Cotton Wool Spots (SE)**  
-        * Result from localised retinal ischemia affecting the nerve fiber layer.  
-        * Appear as white, fluffy, cloud-like patches.  
-        * Both hard and soft exudates are categorized as **white lesions**.
+        # Use .info for White Lesions to get the blue/gray styling
+        st.info("""
+        **White Lesions**
+        
+        * **Hard Exudates (EX):** Lipid/protein deposits. Well-defined yellow/white spots.
+        * **Soft Exudates (SE):** Result of retinal ischemia. Fluffy, cloud-like patches.
         """)
 
     st.divider()
