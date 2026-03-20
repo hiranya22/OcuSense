@@ -20,27 +20,43 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-    @viewport {
-        width: device-width;
-        zoom: 1.0;
-        }
-    .stApp p, .stMarkdown p, .stApp span, .stApp label {
-        font-size: 1.0rem !important; 
-        line-height: 1.6 !important; 
-        letter-spacing: 0.01rem;
+    /* 1. Target the Main Title (OcuSense) */
+    [data-testid="stHeaderElement"] h1, .stMarkdown h1 {
+        font-size: 3.5rem !important;
+        font-weight: 800 !important;
+        color: #247ba0 !important;
+        padding-top: 1rem !important;
     }
-    
+
+    /* 2. Target Subheaders (About Retinal Lesions) */
+    [data-testid="stHeaderElement"] h3, .stMarkdown h3 {
+        font-size: 2.2rem !important;
+        font-weight: 700 !important;
+        color: #31333F !important;
+        margin-top: 2rem !important;
+    }
+
+    /* 3. Global Paragraph Text (Inside main area) */
+    .stApp .main .stMarkdown p {
+        font-size: 1.15rem !important;
+        line-height: 1.7 !important;
+    }
+
+    /* 4. Fix for Expanders (About Section) */
+    .st-emotion-cache-p4m0av p {
+        font-size: 1.1rem !important;
+    }
+
+    /* 5. Button Styling */
     div.stButton > button {
         background-color: #247ba0;
+        color: white;
+        font-size: 1.1rem !important;
         font-weight: 600;
-        border: none;
-        border-radius: 15px;
-        height: 3em;
-        
+        border-radius: 12px;
+        height: 3.5em;
+        width: 100%;
     }
-    
-    }
-         
     </style>
     """, unsafe_allow_html=True)
 
