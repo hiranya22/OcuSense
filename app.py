@@ -245,7 +245,7 @@ with st.expander("Learn more"):
 
     with l_col2:
         # Use .info for White Lesions to get the blue/gray styling
-        st.info("""
+        st.warning("""
         **White Lesions**
         
         * **Hard Exudates (EX):** Lipid/protein deposits. Well-defined yellow/white spots.
