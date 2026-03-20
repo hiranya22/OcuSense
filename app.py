@@ -52,22 +52,6 @@ st.markdown("""
         height: 3.5em;
         width: 100%;
     }
-    
-    .red-lesion-box {
-        background-color: #fff5f5;
-        border-left: 5px solid #e03131;
-        padding: 15px;
-        border-radius: 8px;
-        height: 100%;
-    }
-
-    .white-lesion-box {
-        background-color: #f8f9fa;
-        border-left: 5px solid #ced4da;
-        padding: 15px;
-        border-radius: 8px;
-        height: 100%;
-    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -247,34 +231,33 @@ st.subheader("About Retinal Lesions")
 with st.expander("Learn more"):
 
     st.markdown("#### 1. Types of Retinal Lesions")
-
+    
+    # Using columns to explain lesion types clearly
     l_col1, l_col2 = st.columns(2)
-
+    
     with l_col1:
-        st.markdown('<div class="red-lesion-box">', unsafe_allow_html=True)
         st.markdown("""
-        **Red Lesions**
-        
-        **Microaneurysms (MA)** * Small, round outpouchings of retinal capillaries caused by weakening of vessel walls.  
+        **Microaneurysms (MA)**  
+        * Small, round outpouchings of retinal capillaries caused by weakening of vessel walls.  
         * Typically the **earliest detectable sign** of diabetic retinal damage.
 
-        **Haemorrhages (HE)** * Occur due to rupture of damaged retinal blood vessels.  
-        * Appear as red spots or blotches and often indicate **progression from microaneurysms**.
+        **Haemorrhages (HE)**  
+        * Occur due to rupture of damaged retinal blood vessels.  
+        * Appear as red spots or blotches and often indicate **progression from microaneurysms**.  
+        * Microaneurysms and haemorrhages are collectively referred to as **red lesions**.
         """)
-        st.markdown('</div>', unsafe_allow_html=True)
 
     with l_col2:
-        st.markdown('<div class="white-lesion-box">', unsafe_allow_html=True)
         st.markdown("""
-        **White Lesions**
-        
-        **Hard Exudates (EX)** * Lipid and protein deposits that leak from compromised blood vessels.  
+        **Hard Exudates (EX)**  
+        * Lipid and protein deposits that leak from compromised blood vessels.  
         * Appear as small, well-defined yellow or white spots.
 
-        **Soft Exudates / Cotton Wool Spots (SE)** * Result from localised retinal ischemia affecting the nerve fiber layer.  
-        * Appear as white, fluffy, cloud-like patches.
+        **Soft Exudates / Cotton Wool Spots (SE)**  
+        * Result from localised retinal ischemia affecting the nerve fiber layer.  
+        * Appear as white, fluffy, cloud-like patches.  
+        * Both hard and soft exudates are categorized as **white lesions**.
         """)
-        st.markdown('</div>', unsafe_allow_html=True)
 
     st.divider()
 
