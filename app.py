@@ -278,11 +278,11 @@ with st.expander("Learn more"):
 
     st.markdown("#### 3. Importance of Early Diagnosis")
     st.success("""
-    Diabetic Retinopathy is the **leading cause of preventable vision loss among working-age adults worldwide.**  
+    * **Diabetic Retinopathy is the **leading cause of preventable vision loss among working-age adults worldwide.**  
     
-    Retinal lesions often develop **without noticeable symptoms** in the early stages, meaning significant damage may occur before vision changes are perceived.
+    * **Retinal lesions often develop **without noticeable symptoms** in the early stages, meaning significant damage may occur before vision changes are perceived.
 
-    Early screening and lesion-level detection enable timely clinical intervention, reducing the risk of irreversible vision loss and complications such as macular edema.  
+    * **Early screening and lesion-level detection enable timely clinical intervention, reducing the risk of irreversible vision loss and complications such as macular edema.  
 
     """)
 
