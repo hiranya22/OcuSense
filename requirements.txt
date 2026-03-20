@@ -1,7 +1,7 @@
 streamlit
 numpy
 pandas
-ultralytics
 torch
 torchvision
+ultralytics
 opencv-python-headless
