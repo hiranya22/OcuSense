@@ -20,7 +20,6 @@ st.set_page_config(
 
 st.markdown("""
     <style>
-    /* 1. Target the Main Title (OcuSense) */
     [data-testid="stHeaderElement"] h1, .stMarkdown h1 {
         font-size: 3.5rem !important;
         font-weight: 800 !important;
@@ -28,7 +27,6 @@ st.markdown("""
         padding-top: 1rem !important;
     }
 
-    /* 2. Target Subheaders (About Retinal Lesions) */
     [data-testid="stHeaderElement"] h3, .stMarkdown h3 {
         font-size: 2.2rem !important;
         font-weight: 700 !important;
@@ -36,18 +34,15 @@ st.markdown("""
         margin-top: 2rem !important;
     }
 
-    /* 3. Global Paragraph Text (Inside main area) */
     .stApp .main .stMarkdown p {
         font-size: 1.15rem !important;
         line-height: 1.7 !important;
     }
 
-    /* 4. Fix for Expanders (About Section) */
     .st-emotion-cache-p4m0av p {
         font-size: 1.1rem !important;
     }
 
-    /* 5. Button Styling */
     div.stButton > button {
         background-color: #247ba0;
         color: white;
@@ -267,23 +262,17 @@ with st.expander("Learn more"):
     st.divider()
 
     st.markdown("#### 2. Risk Factors and Disease Progression")
-    st.info("The following factors significantly increase the risk and severity of retinal lesion development:")
 
-    r_col1, r_col2 = st.columns(2)
+    st.info("""
+    **The following factors significantly increase the risk and severity of retinal lesion development:**
 
-    with r_col1:
-        st.markdown("""
-        * **Long-standing Diabetes:** Prolonged exposure to high blood glucose weakens retinal vessels.
-        * **Hypertension:** Elevated blood pressure increases vascular stress and leakage risk.
-        * **Smoking:** Impairs oxygen delivery and accelerates microvascular damage.
-        """)
-
-    with r_col2:
-        st.markdown("""
-        * **High Cholesterol Levels:** Promote the formation of hard exudates.
-        * **Poor Diet and Dehydration:** Excessive salt intake worsens blood pressure control.
-        * **Sedentary Lifestyle:** Contributes to systemic inflammation and vascular dysfunction.
-        """)
+    * **Long-standing Diabetes:** Prolonged exposure to high blood glucose weakens retinal vessels.
+    * **Hypertension:** Elevated blood pressure increases vascular stress and leakage risk.
+    * **Smoking:** Impairs oxygen delivery and accelerates microvascular damage.
+    * **High Cholesterol Levels:** Promote the formation of hard exudates.
+    * **Poor Diet and Dehydration:** Excessive salt intake worsens blood pressure control.
+    * **Sedentary Lifestyle:** Contributes to systemic inflammation and vascular dysfunction.
+    """)
 
     st.divider()
 
