@@ -20,6 +20,10 @@ st.set_page_config(
 
 st.markdown("""
     <style>
+    @viewport {
+        width: device-width;
+        zoom: 1.0;
+        }
     .stApp p, .stMarkdown p, .stApp span, .stApp label {
         font-size: 1.0rem !important; 
         line-height: 1.6 !important; 
@@ -33,6 +37,8 @@ st.markdown("""
         border-radius: 15px;
         height: 3em;
         
+    }
+    
     }
          
     </style>
