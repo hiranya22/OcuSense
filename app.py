@@ -6,7 +6,6 @@ import pandas as pd
 from ultralytics import YOLO
 from ultralytics.utils.plotting import Annotator, colors
 
-
 # ----------------------- Configuration ----------------------- #
 
 st.set_page_config(
