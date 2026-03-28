@@ -4,7 +4,7 @@ import numpy as np
 
 CLIP_LIMIT = 1.0
 TILE_SIZE = (8, 8)
-TARGET_SIZE = 1024  # MUST match training resolution
+TARGET_SIZE = 1024
 
 def preprocess_A(image):
 
@@ -31,12 +31,12 @@ def preprocess_A(image):
     lab = cv2.cvtColor(img_res, cv2.COLOR_BGR2LAB)
     l, _, _ = cv2.split(lab)
 
-    # 5. Channel-wise normalization (CRITICAL)
+    # 5. Channel-wise normalization
     g_enhanced = cv2.normalize(g_enhanced, None, 0, 255, cv2.NORM_MINMAX)
     g_raw = cv2.normalize(g_raw, None, 0, 255, cv2.NORM_MINMAX)
     l = cv2.normalize(l, None, 0, 255, cv2.NORM_MINMAX)
 
-    # Ensure uint8 (YOLO expects images, not philosophical concepts)
+    # uint8 type for YOLO Compatibility
     g_enhanced = g_enhanced.astype(np.uint8)
     g_raw = g_raw.astype(np.uint8)
     l = l.astype(np.uint8)

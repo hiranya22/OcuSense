@@ -64,10 +64,13 @@ CLINICAL_LABELS = {
 
 # ----------------------- Core Logic ----------------------- #
 
+# Caching
 @st.cache_resource
 def get_model(path):
     return YOLO(path)
 
+
+# Checking if the image upload is a fundus image
 def is_valid_fundus(img):
     
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -234,7 +237,6 @@ with st.expander("Learn more"):
     l_col1, l_col2 = st.columns(2)
 
     with l_col1:
-        # Use .error for Red Lesions to get the red styling/icon
         st.error("""
         **Red Lesions**
         
@@ -243,7 +245,6 @@ with st.expander("Learn more"):
         """)
 
     with l_col2:
-        # Use .info for White Lesions to get the blue/gray styling
         st.warning("""
         **White Lesions**
         

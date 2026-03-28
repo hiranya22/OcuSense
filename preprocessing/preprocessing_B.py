@@ -5,7 +5,7 @@ import numpy as np
 
 # Parameters specifically tuned for detecting smaller lesions (MAs)
 CLIP_LIMIT_B = 2.5
-TILE_SIZE_B = (4, 4)  # Smaller tiles for finer local contrast
+TILE_SIZE_B = (4, 4)  
 TARGET_SIZE = 1024 
 
 def preprocess_B(image):
@@ -23,9 +23,8 @@ def preprocess_B(image):
     # Split BGR to isolate the Green channel (highest contrast for retinal vessels/MAs)
     b, g, r = cv2.split(img_res)
 
-    # 2. Sharpening Step (Unique to Module B)
-    # This kernel enhances the center pixel relative to its neighbors
-    # to make small, dark spots (MAs) "pop" against the background.
+    # 2. Sharpening Step
+    # This kernel enhances the center pixel relative to its neighbors to make MAs pop against the background.
     kernel = np.array([[ 0, -1,  0],
                        [-1,  5, -1],
                        [ 0, -1,  0]])
@@ -50,7 +49,6 @@ def preprocess_B(image):
     l = cv2.normalize(l, None, 0, 255, cv2.NORM_MINMAX)
 
     # 7. Convert to uint8 
-    # (YOLO expects standard image depth; prevents 'philosophical concepts' errors)
     g_enhanced = g_enhanced.astype(np.uint8)
     g_raw = g_raw.astype(np.uint8)
     l = l.astype(np.uint8)
