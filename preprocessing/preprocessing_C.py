@@ -35,7 +35,7 @@ def preprocess_C(image):
 
     # 3. Black Top-Hat Transform (Channel 2: Lesion Isolation)
     # Target: Small dark spots (MAs/Hemorrhages). 
-    # Logic: It subtracts the 'opened' image from the original, leaving behind only dark features smaller than the SE.
+    # Logic: It subtracts the 'closed' image from the original, leaving behind only dark features smaller than the SE.
     se = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, STR_ELEM_SIZE)
     ch2_tophat = cv2.morphologyEx(g, cv2.MORPH_BLACKHAT, se)
 
