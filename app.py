@@ -99,6 +99,15 @@ def process_and_detect(orig_img, pipeline_func, model_path, conf):
     # 4. Annotation on Original Image [Used BGR for OpenCV consistency, converted to RGB for Streamlit]
     annotator = Annotator(orig_img.copy(), line_width=max(2, int(w_orig/500)))
     
+    # Reliability monitoring
+    confidences = results.boxes.conf.cpu().numpy() if len(results.boxes) > 0 else []
+
+    mean_conf = float(np.mean(confidences)) if len(confidences) > 0 else 0
+
+    low_conf_warning = (
+    len(confidences) > 0 and mean_conf < 0.25
+    )
+
     detection_data = []
     for box in results.boxes:
         coords = box.xyxy[0].cpu().numpy()
@@ -118,7 +127,13 @@ def process_and_detect(orig_img, pipeline_func, model_path, conf):
         
         detection_data.append({"Type": label_pretty, "Confidence": conf_val})
 
-    return annotator.result(), processed_img, detection_data
+    return (
+    annotator.result(),
+    processed_img,
+    detection_data,
+    mean_conf,
+    low_conf_warning
+)
 
 # ----------------------- Sidebar UI ----------------------- #
 
@@ -192,7 +207,9 @@ if uploaded:
                     m_path = "models/preprocessing_C_best.pt"
                 
                 with st.spinner("Analysing..."):
-                    final_plot, proc_view, detections = process_and_detect(raw_img, p_func, m_path, conf_level)
+                    final_plot, proc_view, detections, mean_conf, low_conf_warning = process_and_detect(
+                    raw_img, p_func, m_path, conf_level
+                )
                 
                 with col_img:
                     st.subheader("Lesion Mapping")
@@ -201,8 +218,13 @@ if uploaded:
                     
                 with col_data:
                     st.subheader("Summary")
+                    if low_conf_warning:
+                        st.warning(
+                        "Please consult with a healthcare professional for further evaluation due to the low average confidence of detections"
+                        )
                     if detections:
                         df = pd.DataFrame(detections)
+                        st.metric("Average Detection Confidence", f"{mean_conf:.2f}")
                         st.metric("Total Lesions Found", len(df))
                         
                         # Grouped counts
